@@ -44,6 +44,7 @@ mac {
     plugins.files += $$BUILD_TREE/plugins/libosxplugin.$$QMAKE_EXTENSION_SHLIB
     plugins.files += $$BUILD_TREE/plugins/libverifierplugin.$$QMAKE_EXTENSION_SHLIB
     plugins.files += $$BUILD_TREE/plugins/libzncplugin.$$QMAKE_EXTENSION_SHLIB
+    plugins.files += $$BUILD_TREE/plugins/libweechatplugin.$$QMAKE_EXTENSION_SHLIB
     plugins.path = Contents/PlugIns
     QMAKE_BUNDLE_DATA += plugins
 }
