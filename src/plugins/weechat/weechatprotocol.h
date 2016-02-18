@@ -29,6 +29,8 @@
 #ifndef WEECHATPROTOCOL_H
 #define WEECHATPROTOCOL_H
 
+#include <QWebSocket>
+
 #include <ircprotocol.h>
 
 class WeeChatProtocol : public IRC_PREPEND_NAMESPACE(IrcProtocol)
@@ -43,6 +45,19 @@ public:
     void close() override;
     void read() override;
     bool write(const QByteArray& data) override;
+
+private slots:
+    void processMessage(const QByteArray& message);
+    void sendCommand(const QByteArray& buf);
+
+    void receiveInfo(int code, const QString &info);
+    void receiveError(const QString& error);
+
+private:
+    QString prefix() const;
+
+    QWebSocket m_socket;
+    quint32 m_nextMessageId = 0;
 };
 
 #endif // WEECHATPROTOCOL_H
